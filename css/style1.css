@@ -1,0 +1,164 @@
+body {
+  min-height: 75rem; /* Can be removed; just added for demo purposes */
+}
+
+.navbar {
+  margin-bottom: 0;
+  list-style:none;
+	float:left;
+	position:relative;width:100%;
+}
+
+.jumbotron {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+.card {
+    float: left;
+    width: 403px;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+    margin-right: 4px;
+    background: #e2e4e6;
+  
+}
+
+.card > img {
+  margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+.navbar a{
+  color:white;
+}
+.form-signin {
+  max-width: 600px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.project-cont{
+  flex-wrap: nowrap;
+  overflow: auto;
+      display: flex;
+	  list-style: none;
+	  padding: 0;
+	  margin-right: 50px;
+  }
+  .project-cont li{
+    width: 340px;
+    flex: none;
+  }
+.proj-cont{
+  background-color: #fff;
+border-bottom: 1px solid #ccc;
+border-radius: 3px;
+margin-top: 5px;
+height:350px;
+     width: 330px;
+	margin-left :5px;
+}
+h3{
+  color:black;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
+  background-size: cover;
+  height:100%;
+}
+
+#feedback-page{
+	text-align:center;
+}
+
+#form-main{
+	width:100%;
+	float:left;
+	padding-top:0px;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.4);
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+  margin-top:30px;
+	margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.feedback-input {
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+	font-size: 15px;
+	border-radius: 0;
+	line-height: 18px;
+	background-color: #fbfbfb;
+	padding: 5px 5px 5px 5px;
+	margin-bottom: 10px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+  border-bottom: 3px solid #3498db;
+}
+
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+  padding: 10px 10px 10px 15px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+.nvb{
+  background-color: #F16325 !important;
+}

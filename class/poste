@@ -1,0 +1,63 @@
+<?php 
+class poste
+{
+	var $id_poste, $nom_poste,$id_service,$salaire;
+
+  public	function ajoute_poste($v_nom_poste,$vid,$v_salaire)
+  {
+	   include("form/connexion_bdd.php");
+	   $result="";
+       $requete="INSERT INTO `poste`(`nom_poste`,`id_service`,`salaire`) values ('$v_nom_poste','$vid','$v_salaire') ";
+       $result=$id->query($requete);
+      return $result; 
+  }
+ 
+  public	function modifier_poste($id_poste,$v_nom_poste,$v_salaire,$vid)
+  {
+      include("form/connexion_bdd.php");
+	  $result="";	  
+	  $requete="UPDATE poste SET nom_poste='$v_nom_poste',salaire='$v_salaire',id_service='$vid'  where id_poste='$i' ";
+      $result=$id->query($requete);
+	 
+
+	  return $result;
+  }
+  
+  
+  public	function suprimer_poste($id_poste){
+	  
+	  
+$requete="DELETE FROM poste  WHERE id_poste='$id_poste'";
+$result=$id->query($requete);
+  }
+   public	function affiche_poste($user)
+   {
+	   include("form/connexion_bdd.php");
+	   $result="";	
+	   $req="select *from poste where id_poste='$user' ";  
+       $result=$id->query($requete);
+      return $result;
+   }
+   
+   public	function get_id_poste($v_poste)
+   {
+	   include("form/connexion_bdd.php");
+	   $re="";	  
+	   $user_p = "SELECT id_poste FROM poste WHERE nom_poste='$v_poste' ";
+       $re=$id->query($user_p);
+	   return $re;
+	   
+   }
+  
+    public	function get_id_service($user){
+	   $req="select id_service from service where id_service='$user' ";
+	   
+   $result=$id->query($requete);
+$donne=mysqli_fetch_array($result);
+$v_id=$donne[0];
+	  return $v_id;
+   
+	   
+	   
+   }
+} ?>

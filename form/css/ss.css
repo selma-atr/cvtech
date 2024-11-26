@@ -1,0 +1,21 @@
+html, body{
+  	font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+  	background:#000;
+  	overflow-x: hidden;
+}
+h4, h5, h6,
+h1, h2, h3 {margin-top: 0;}
+ul, ol {margin: 0;}
+p {margin: 0;}
+body a{
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+ nav.top1.navbar.navbar-default.navbar-static-top {
+    background-color: rgb(6, 217, 149);
+    font-family: 'Roboto', sans-serif; 
+} 
