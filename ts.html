@@ -1,0 +1,484 @@
+<?php
+ session_start();?>
+<?php
+
+include("form/connexion_bdd.php");
+$v_nom="";
+$v_description="";
+$v_date_attachement="" ;
+$v_attachement="";
+$v_atache="";
+$iserror=false;
+$errormsg="";
+if(isset($_POST['valider'])){  $i=$_GET['id'];
+$v_phase=mysqli_real_escape_string($id,$_POST["phase"]);
+ $v_nom=mysqli_real_escape_string($id,$_POST["nom"]);
+  $q="SELECT id_phase FROM phase WHERE nom_phase='$v_phase' ";
+  	$done=$id->query($q);
+		foreach ($done as$do) 
+{
+	$id_phase=$do['id_phase'];
+	
+$que="SELECT * FROM tache WHERE  id_phase='$id_phase' AND nom_tache='$v_nom' AND id_tache!= '$i'LIMIT 1";
+	$resul=mysqli_query($id,$que);
+	if(	mysqli_num_rows ($resul)==1){
+		$iserror=true;
+		$errormsg="ce nom de tache est deja pris  dans la phase de ce projet  il faut choisir un autre !";
+		}
+$v_description=mysqli_real_escape_string($id,$_POST["description_tache"]);
+$v_date_attachement=mysqli_real_escape_string($id,$_POST["date-attachement"]); 
+$v_atache=mysqli_real_escape_string($id,$_POST["atache"]);  
+
+	
+echo $v_atache;
+echo $v_date_attachement;
+echo $v_description;
+ echo $v_nom; echo $id_phase;
+	
+if($iserror==false)
+{
+
+$requete="UPDATE `tache` SET `nom_tache`='$v_nom',`description_tache`='$v_description',`date_attachemen`='$v_date_attachement',`attache_a`='$v_atache',id_phase='$id_phase'  WHERE id_tache='$i'" ;
+$result=$id->query($requete);
+if($result)
+{   echo"tre";header('Location: resultat_ajouchef.php');echo "ajouter avec succe";}
+ else{ $iserror=true;
+$errormsg="erreur d'ajouter ";}
+}
+}
+}
+
+
+?>
+
+
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title> modifier  tache</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/font-awesome.css" rel="stylesheet">
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!----webfonts--->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<!---//webfonts--->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+<div id="wrapper">
+     <!-- Navigation -->
+        <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Octinum</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+	        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge">4</span></a>
+	        		<ul class="dropdown-menu">
+						<li class="dropdown-menu-header">
+							<strong>Messages</strong>
+							<div class="progress thin">
+							  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+							    <span class="sr-only">40% Complete (success)</span>
+							  </div>
+							</div>
+						</li>
+						<li class="avatar">
+							<a href="#">
+								<img src="images/1.png" alt=""/>
+								<div>New message</div>
+								<small>1 minute ago</small>
+								<span class="label label-info">NEW</span>
+							</a>
+						</li>
+						<li class="avatar">
+							<a href="#">
+								<img src="images/2.png" alt=""/>
+								<div>New message</div>
+								<small>1 minute ago</small>
+								<span class="label label-info">NEW</span>
+							</a>
+						</li>
+						<li class="avatar">
+							<a href="#">
+								<img src="images/3.png" alt=""/>
+								<div>New message</div>
+								<small>1 minute ago</small>
+							</a>
+						</li>
+						<li class="avatar">
+							<a href="#">
+								<img src="images/4.png" alt=""/>
+								<div>New message</div>
+								<small>1 minute ago</small>
+							</a>
+						</li>
+						<li class="avatar">
+							<a href="#">
+								<img src="images/5.png" alt=""/>
+								<div>New message</div>
+								<small>1 minute ago</small>
+							</a>
+						</li>
+						<li class="avatar">
+							<a href="#">
+								<img src="images/pic1.png" alt=""/>
+								<div>New message</div>
+								<small>1 minute ago</small>
+							</a>
+						</li>
+						<li class="dropdown-menu-footer text-center">
+							<a href="#">View all messages</a>
+						</li>
+	        		</ul>
+	      		</li>
+	 <li class="dropdown">
+	        		<a href="#" class="dropdown-toggle avatar" data-toggle="dropdown"><img src="images/1.png" alt=""/><span class="badge">9</span></a>
+	        		<ul class="dropdown-menu">
+						<li class="dropdown-menu-header text-center">
+							<strong>Account</strong>
+						</li>
+						<li class="m_2"><a href="notechef.php"><i class="fa fa-bell-o"></i> notification <span class="label label-info">					
+                        				 <?php $o= $_SESSION['id_employe'];
+ $SELECT_COUNT = "SELECT COUNT(*) AS total FROM notification WHERE 	id_rec_note='$o' AND vu_no='0' ";
+		 $resulta = $id->query($SELECT_COUNT);
+	//	$count = MYSQLi_FETCH_ASSOC($resulta);echo $count['total'];
+if($resulta){
+	$row =MYSQLi_FETCH_ASSOC($resulta);
+	echo $row['total'];}
+
+ $SELECT_COUNT1 = "SELECT id_notification  FROM notification WHERE 	id_rec_note='$o' AND vu_no='0' ";
+		 $resulta1 = $id->query($SELECT_COUNT1);
+	//	$count = MYSQLi_FETCH_ASSOC($resulta);echo $count['total'];
+
+	
+
+		?></span></a></li>
+						<li class="m_2"><a href="msg_rechef.php"><i class="fa fa-envelope-o"></i> Messages <span class="label label-success">
+		<?php	  
+						$o= $_SESSION['id_employe'];
+						$SELECT_COUNT = "SELECT COUNT(*) AS total FROM message WHERE 	id_recepteur='$o' AND vu_msg='0'  ";
+		 $resulta = $id->query($SELECT_COUNT);
+	//	$count = MYSQLi_FETCH_ASSOC($resulta);echo $count['total'];
+if($resulta){
+	$row =MYSQLi_FETCH_ASSOC($resulta);
+	echo $row['total'];}
+		  ?>
+						</span></a></li>
+			
+						<li class="m_2"><a href="projet.php"><i class="fa fa-file"></i> Projet <span class="label label-primary"><?php
+ $o= $_SESSION['id_employe'];
+
+	 
+	 $currentPhase = array();
+	 $currentProject = array();
+	 $countProjects = 0;
+	 $o= $_SESSION['id_employe'];
+	$resul = $id->query("SELECT  id_tache FROM attache where id_employe=$o ");
+	if($resul)
+		while($row =MYSQLi_FETCH_ASSOC($resul))
+		{ $l=$row['id_tache'];
+			$resulta = $id->query("SELECT id_phase FROM tache where id_tache='$l' OR id_chef='$o'");
+			if($resulta){
+				
+				
+				while($row1 =MYSQLi_FETCH_ASSOC($resulta))
+				{
+					if(!in_array($row1['id_phase'], $currentPhase)){
+						array_push($currentPhase, $row1['id_phase']);
+						
+						$result2 = $id->query('SELECT id_projet FROM phase where id_phase='.$row1["id_phase"].' ');
+						if($result2){
+							while($row2 =MYSQLi_FETCH_ASSOC($result2))
+							{
+								if(!in_array($row2['id_projet'], $currentProject)){
+									array_push($currentProject, $row2['id_projet']);
+							
+									$countProjects += 1;
+								}
+							}
+						}
+					}
+				}
+			}
+	     }
+	
+	
+
+
+
+		
+	
+echo $countProjects;
+
+		 ?></span></a></li>
+						<li class="divider"></li>
+						<li class="m_2"><a href="#"><i class="fa fa-shield"></i> Lock Profile</a></li>
+						<li class="m_2"><a href="deconnct.php"><i class="fa fa-lock"></i> Logout</a></li>
+	        		</ul>
+	      		</li>
+			</ul>
+			</ul>
+			<form class="navbar-form navbar-right">
+              <input type="text" class="form-control" value="Search..." onfocus="this.value = '';"
+			  onblur="if (this.value == '') {this.value = 'Search...';}">
+            </form>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw nav_icon"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-laptop nav_icon"></i>projet<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://127.0.0.1/pm/ajoute_projet.php">cree-Projet</a>
+                                </li>
+								<li>
+                                    <a href="http://127.0.0.1/pm/projet.php">liste-Projet</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                       
+                        <li>
+                            <a href="#"><i class="fa fa-envelope nav_icon"></i>Messagerie<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">MSG Reçus</a>
+                                </li>
+                                <li>
+                                    <a href="#">MSG Envoye</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                        
+                        
+                      
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="page-wrapper">
+		    
+        <div class="graphs">
+		
+		<div class="xs">
+  	       <h3>Modifier  Tache</h3>
+		   		   	 	 <?php
+			  if ($iserror== true)
+	 { ?>
+			  <div class="isa_error" style="margin: 10px 0px; padding:12px;color: #D8000C;background-color: #FFD2D2; text-align: center;">
+			  <i class="fa fa-times-circle" style="font-size:2em; vertical-align:middle;"></i> 
+			  <?=  $errormsg; ?> 
+   
+
+
+		        </div>
+				
+				<?php 
+	 }
+				?>
+  	         <div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">
+						
+							<form class="form-horizontal" action="" method="POST">
+							   <?php 
+							   							   
+							 
+							 		$id =mysqli_connect("localhost","root","","pfe");
+if ( ! $id )
+{
+die ("echec de connexion au serveur M.ySQL. <br/>");
+}
+$id_db=mysqli_select_db($id,"pfe");
+if(! $id_db)
+{
+	die("echec de selectionne de la bdd");
+}
+		  $i=$_GET['id'];
+$queryp="SELECT * FROM tache WHERE id_tache='$i'";
+$resulta=$id->query($queryp);
+foreach ( $resulta as $ser) 
+{
+
+?> 
+							
+							
+							
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"required autofocus>Nom_TACHE *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" id="Nom_TACHE"name="nom" placeholder="Nom TACHE *" value="<?=$ser['nom_tache'] ?>" required autofocus>
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label for="disabledinput" class="col-sm-2 control-label"  >Description_tache*</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" name="description_tache" placeholder="Description_tache*" value="<?=$ser['description_tache']?>" required autofocus>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword" class="col-sm-2 control-label" required autofocus>date-attachement *</label>
+									<div class="col-sm-8">
+										<input type="date" class="form-control1" name="date-attachement" placeholder="date-attachement" value="<?= $ser['date_attachemen']?>" required autofocus>
+									</div>
+								</div>
+								 <div class="form-group">
+									<label class="col-sm-2 control-label"name="phase" required autofocus>PHASE</label>
+									<div class="col-sm-8">
+									<?php   $id_ph=$ser['id_phase'];
+									$qu="SELECT nom_phase FROM phase  WHERE id_phase='$id_ph' ";
+$ig=$id->query($qu);
+
+$nomp=mysqli_fetch_array($ig);
+
+									?>
+										<select  class="form-control1" name="phase" value="<?=$nomphase?>" required autofocus>
+										    
+<?php  $id_ph=$ser['id_phase'];
+									$qu="SELECT nom_phase FROM phase  WHERE id_phase='$id_ph' ";
+$ig=$id->query($qu);
+
+$nomp=mysqli_fetch_array($ig);
+$o[]=$nomp[nom_phase];
+    echo '<option value=\'' . $o[0] . '\'>' .$o[0]. '</option>';
+/*
+$i=$_GET['id'];
+$requete="SELECT id_phase from tache where id_tache='$i'";
+$result=$id->query($requete);
+while ($v_idph=mysqli_fetch_array($result))
+$v_idphase[]=$v_idph['id_phase'];
+
+$req="SELECT id_projet from phase where id_phase='$v_idphase[0]'";
+$re=$id->query($req);
+while ($v_idp=mysqli_fetch_array($re))
+$v_idpr[]=$v_idp['id_phase'];
+
+$ri="SELECT *from phase where id_projet='$v_idpr[0]'";
+$resulta=$id->query($ri);
+$i=0;
+while($donne=mysqli_fetch_array($resulta))
+{ 
+	$pos[]=$donne['nom_phase'];
+ $i++;
+
+} 
+for ($k = 0; $k < $i;$k++)
+  {
+    echo '<option value=\'' . $pos[$k] . '\'>' . $pos[$k] . '</option>';
+  }
+*/?>
+										
+										</select>
+									</div>
+								</div>
+								
+								
+							<div class="form-group">
+									<label class="col-sm-2 control-label" required autofocus>ATTACHE à *</label>
+									<div class="col-sm-8">
+										<select multiple="" class="form-control1" name="atache"  value="<?$ser['attache_a']?>" required autofocus>
+											 
+											 <?php
+$id =mysqli_connect("localhost","root","","pfe");
+if ( ! $id )
+{
+die ("echec de connexion au serveur M.ySQL. <br/>");
+}
+$id_db=mysqli_select_db($id,"pfe");
+if(! $id_db)
+{
+	die("echec de selectionne de la bdd");
+}
+
+$query="SELECT 	* FROM employe ";
+$result=$id->query($query);
+
+$i=0;
+while($donne=mysqli_fetch_array($result))
+{ 
+
+    echo '<option value=\'' .  $donne['id_employe']. '\'>' .$donne['nom_employe']. $donne['prenom_employe']. $donne['username']  . '</option>';
+  }	
+?>
+										</select>
+										<button class="btn-inverse btn">Ajouter</button>
+									</div>
+							 </div>
+								
+						
+					
+	
+<?php }?>
+      <div class="panel-footer">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<button class="btn-success btn" name="valider">valider</button>
+				<button class="btn-default btn">Cancel</button>
+				
+			</div>
+		</div>
+	 </div>
+    </form>
+  </div>
+				  </div>
+				  </div>
+  <div class="copy_layout">
+      <p>Gestion de prohet -sujet fin d'etude 2018 <a href="" target="_blank">W3layouts</a> </p>
+  </div>
+  </div>
+      </div>
+      <!-- /#page-wrapper -->
+   </div>
+    <!-- /#wrapper -->
+<!-- Nav CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/custom.css" rel="stylesheet">
+<!-- Metis Menu Plugin JavaScript -->
+<script src="js/metisMenu.min.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
