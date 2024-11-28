@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+
+<html lang="en" translate="no">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+
+    <title> Login Form in HTMLand CSS | Codehal </title> 
+    <link rel="stylesheet" href="css/style.css">
+ </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="imgs">
+        <label><img src="images/epsi1.png" width='170' height='70'/> </label>
+       </div> 
+       <div class="imgt">
+        <label><img src="images/wis1.png" width='180' height='80'/> </label>
+       </div> 
+      <form action="">
+
+        <div class="input-box">
+          <input type="text" placeholder="Identifiant" required> 
+        </div> 
+
+        <div class="input-box">
+          <input type="password" placeholder="Mot de passe" required>
+        </div>
+
+        <div class="remember-forgot">
+          <label> <input type="checkbox"> Remember me</label>
+          <a href="#">Mot de passe oublié ?</a>
+        </div>
+        <button class="btn-default btn"  name="submit" >se connecter</button>
+        <div class="register-link">
+          <p> don't have account</p>
+        </div>
+      </form>
+
+    </div>
+
+    <script>
+      window.buildUrl = (filename) => { return `https://static.360learning.com/client-assets/prod-568b8068543/dist/login/${filename}` }
+    </script>
+  </body>
+</html>
